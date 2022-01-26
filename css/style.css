@@ -1,0 +1,147 @@
+:root {
+    --text-color: #f0f6f0 ;
+    --background-color: #222323;
+    --border-size: 2px;
+}
+html, body {
+    height: 100%;
+    color: var(--text-color);
+    background: var(--background-window);
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Roboto";
+}
+
+.wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.keyboard {
+    border: var(--border-size) solid var(--background-color);
+    width: 810px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+}
+.keyboard__row {
+    display: flex;
+}
+.keyboard__row:not(:last-child) { margin-bottom: 10px; }
+li {
+    border: 2px solid var(--background-color);
+    color: var(--background-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    box-shadow: 0px 3px 1px rgb(83, 83, 83);
+    position: relative;
+    top: 0;
+    transition: all 0.3s ease 0s;
+}
+li:active:not(.arrows) {
+    top: 2px;
+    box-shadow: 0px 1px 1px rgb(83, 83, 83);
+}
+.keyboard__row li:not(:last-child) { margin-right: 10px; }
+.row__1 li {
+    height: 32px;
+    font-size: 12px;
+    padding: 2px;
+}
+.row__2 li {
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+}
+.keybuttons-left {
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 5px 0 0;
+}
+.keybuttons-right {
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 0 0 5px;
+}
+.keybuttons-middle {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+#backspace {
+    width: 75px;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 5px 0 0;
+}
+#tab {
+    width: 70px;
+}
+#caps {
+    width: 80px;
+}
+#enter {
+    width: 90px;
+    align-items: flex-end;
+}
+#shift {
+    width: 113px;
+}
+#ctrl,#win,#alt {
+    width: 60px
+}
+.icon__linux {
+    width: 42px;
+}
+#space {
+    width: 265px;
+}
+.arrows {
+    box-shadow: none;
+    border: none;
+    width: 165px;
+    align-items: center;
+    padding: 0;
+}
+.arrow {
+    border-radius: 3px;
+    border: 2px solid #000;
+    width: 48px;
+    height: 21px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 3px 1px rgb(83, 83, 83);
+    position: relative;
+    top: 0;
+    transition: all 0.3s ease 0s;
+}
+.arrow:active {
+    top: 2px;
+    box-shadow: 0px 1px 1px rgb(83, 83, 83);
+}
+.arrows__up {
+    margin-bottom: 2px;
+}
+.arrows__up img {
+    transform: rotate(180deg);
+}
+.arrows__level2 {
+    display: flex;
+}
+.arrows__level2 > *:not(:last-child) {
+    margin-right: 10px;
+}
+.arrows__left img{
+    transform: rotate(90deg);
+}
+.arrows__right img{
+    transform: rotate(-90deg);
+}
+
