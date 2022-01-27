@@ -15,8 +15,25 @@ html, body {
 .wrapper {
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.monitor {
+    height: 450px;
+    width: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    margin: 0 0 20px 0;
+    border-radius: 5px;
+}
+.monitor__display {
+    height: 400px;
+    width: 600px;
+    background: #fff;
 }
 .keyboard {
     border: var(--border-size) solid var(--background-color);
@@ -49,6 +66,12 @@ li:active:not(.arrows) {
     top: 2px;
     box-shadow: 0px 1px 1px rgb(83, 83, 83);
 }
+
+.active {
+    top: 2px;
+    box-shadow: 0px 1px 1px rgb(83, 83, 83);
+}
+
 .keyboard__row li:not(:last-child) { margin-right: 10px; }
 .row__1 li {
     height: 32px;
@@ -75,32 +98,32 @@ li:active:not(.arrows) {
     align-items: center;
     padding: 0;
 }
-#backspace {
+#Backspace {
     width: 75px;
     justify-content: center;
     align-items: flex-end;
     padding: 0 5px 0 0;
 }
-#tab {
+#Tab {
     width: 70px;
 }
-#caps {
+#CapsLock {
     width: 80px;
 }
-#enter {
+#Enter {
     width: 90px;
     align-items: flex-end;
 }
-#shift {
+#ShiftRight, #ShiftLeft {
     width: 113px;
 }
-#ctrl,#win,#alt {
+#ControlRight, #ControlLeft,#OSLeft,#AltLeft, #AltRight {
     width: 60px
 }
 .icon__linux {
     width: 42px;
 }
-#space {
+#Space {
     width: 265px;
 }
 .arrows {
