@@ -1,7 +1,13 @@
 :root {
-    --text-color: #f0f6f0 ;
-    --background-color: #222323;
+    /* Dark Theme */
+    --background-window: #333;
+    --text-color: #f0f6f0;
+    --background-keyboard: rgb(36, 35, 35);
+    --background-shadow: rgb(27, 27, 27);
+    --background-display: #000;
+    --background-color: #211e20;
     --border-size: 2px;
+    /* White Theme */
 }
 html, body {
     height: 100%;
@@ -26,17 +32,50 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #000;
+    background: var(--background-keyboard);
     margin: 0 0 20px 0;
     border-radius: 5px;
+    position: relative;
+}
+.monitor::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background: rgb(207, 86, 86);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
 }
 .monitor__display {
     height: 400px;
     width: 600px;
-    background: #fff;
+    background: var(--background-display);
+}
+.monitor__text {
+    padding: 10px;
+    font-weight: 500;
+    overflow: hidden;
+    border-bottom: 1px solid #000;
+    color: #1b5e20;
+    position: relative;
+}
+.monitor__text::after {
+    content: "_";
+    color: #fff;
+    font-size: 20px;
+    animation: blicking 0.4s linear infinite alternate;
+}
+@keyframes blicking {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 .keyboard {
-    border: var(--border-size) solid var(--background-color);
+    background: var(--background-keyboard);
     width: 810px;
     height: auto;
     display: flex;
@@ -49,40 +88,32 @@ html, body {
 }
 .keyboard__row:not(:last-child) { margin-bottom: 10px; }
 li {
-    border: 2px solid var(--background-color);
-    color: var(--background-color);
+    color: #e9efec;
     width: 45px;
     height: 45px;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 5px;
-    box-shadow: 0px 3px 1px rgb(83, 83, 83);
+    box-shadow: 0px 3px 1px var(--background-shadow);
     position: relative;
     top: 0;
     transition: all 0.3s ease 0s;
+    background: #211e20;
 }
-li:active:not(.arrows) {
-    top: 2px;
-    box-shadow: 0px 1px 1px rgb(83, 83, 83);
+.pinhelp {
+    font-size: 16px;
+    padding: 20px;
 }
-
 .active {
     top: 2px;
-    box-shadow: 0px 1px 1px rgb(83, 83, 83);
+    box-shadow: 0px 1px 1px var(--background-shadow);
+    background: #ffb0a3;
 }
 
 .keyboard__row li:not(:last-child) { margin-right: 10px; }
-.row__1 li {
-    height: 32px;
-    font-size: 12px;
-    padding: 2px;
-}
-.row__2 li {
-    justify-content: center;
-    align-items: center;
-    padding-right: 20px;
-}
 .keybuttons-left {
     justify-content: center;
     align-items: flex-end;
@@ -127,44 +158,5 @@ li:active:not(.arrows) {
     width: 265px;
 }
 .arrows {
-    box-shadow: none;
-    border: none;
     width: 165px;
-    align-items: center;
-    padding: 0;
 }
-.arrow {
-    border-radius: 3px;
-    border: 2px solid #000;
-    width: 48px;
-    height: 21px;
-    display: flex;
-    justify-content: center;
-    box-shadow: 0px 3px 1px rgb(83, 83, 83);
-    position: relative;
-    top: 0;
-    transition: all 0.3s ease 0s;
-}
-.arrow:active {
-    top: 2px;
-    box-shadow: 0px 1px 1px rgb(83, 83, 83);
-}
-.arrows__up {
-    margin-bottom: 2px;
-}
-.arrows__up img {
-    transform: rotate(180deg);
-}
-.arrows__level2 {
-    display: flex;
-}
-.arrows__level2 > *:not(:last-child) {
-    margin-right: 10px;
-}
-.arrows__left img{
-    transform: rotate(90deg);
-}
-.arrows__right img{
-    transform: rotate(-90deg);
-}
-
