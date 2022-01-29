@@ -1,6 +1,7 @@
 "use strict"
 
-const display = document.querySelector(".monitor__text"),
+const displayText = document.querySelector(".monitor__text"),
+      display = document.querySelector("monitor__display"),
       keyboard = document.querySelector(".keyboard"),
       shift = Array.from(document.querySelectorAll("[data-shift]")),
       capsLock = Array.from(document.querySelectorAll("[data-symbol]")),
@@ -36,18 +37,28 @@ function onKeyDown(event) {
     }
 
     if (shift.includes(current) || capsLock.includes(current)) {
-        display.textContent += current.textContent;
+        displayText.innerHTML += current.innerHTML;
     }
 
     if (current.id == "Backspace") {
-        display.textContent = display.textContent.slice(0, display.textContent.length-1);
+        displayText.innerHTML = displayText.innerHTML.slice(0, -1);
     }
-    if (current.id == "Space") {
-        display.textContent += " ";
-    }
-    if (current.id == "Enter") display.innerHTML = "";
-}
 
+    if (current.id == "Space") {
+        displayText.innerHTML += "&#x2007;";
+    }
+    
+    if (current.id == "Enter") addEnter();
+
+    if (displayText.offsetWidth >= 435)  {
+        if (current.id == "Backspace") 
+            displayText.innerHTML = displayText.innerHTML.slice(0, -1);
+        else addEnter();
+    }  
+}  
+function addEnter() {
+    displayText.innerHTML += "<br>";
+}
 function onKeyUp(event) {
     let current = document.getElementById(event.code);
     if (!current) return;
@@ -75,3 +86,15 @@ function onCapsLock(isPress) {
 
 window.addEventListener("keydown", onKeyDown);
 window.addEventListener("keyup", onKeyUp);
+window.addEventListener("click", () => displayText.innerHTML = "");
+keyboard.onmousedown = () => false;
+
+// Theme black or white
+const toggle = document.querySelector(".toggle");
+toggle.addEventListener("click", function(event) {
+    let current = this.firstElementChild;
+    
+    document.body.classList.toggle("_active");
+    current.classList.toggle("toggle__active");
+
+});

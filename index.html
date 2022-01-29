@@ -3,16 +3,17 @@
     <head>
         <title>FastKeyboard</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=800">
-
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/normalize.css">
     </head>
-    <body>
+    <body class="_active">
         <div class="wrapper">
             <div class="monitor"> 
                 <div class="monitor__display">
-                    <div class="monitor__text">ffff</div>
+                    <span class="monitor__text"></span>
+                </div>
+                <div class="toggle">
+                    <div class="toggle__circle"></div>
                 </div>
             </div>
             <div class="keyboard">
@@ -64,7 +65,7 @@
                     <li class="keybuttons-left" id="Enter">Enter</li>
                 </ul>
                 <ul class="keyboard__row row__5">
-                    <li class="keybuttons-right" id="ShiftLeft">Shift</lii>
+                    <li class="keybuttons-right" id="ShiftLeft">Shift</li>
                     <li data-symbol id="KeyZ">z</li>
                     <li data-symbol id="KeyX">x</li>
                     <li data-symbol id="KeyC">c</li>
@@ -87,7 +88,7 @@
                     <li class="arrows"></li>
                 </ul>
             </div>     
-            <div class="pinhelp">Press the Enter to clear</div>
+            <div class="pinhelp">Press the Click to clear</div>
         </div>
     </body>
     <script src="js/script.js"></script>

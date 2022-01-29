@@ -7,7 +7,7 @@
     --background-display: #000;
     --background-color: #211e20;
     --border-size: 2px;
-    /* White Theme */
+    --text-display: #1b5e20;
 }
 html, body {
     height: 100%;
@@ -17,7 +17,16 @@ html, body {
     font-weight: 400;
     font-family: "Roboto";
 }
-
+._active {
+/* White Theme */
+    --background-window: #f0f6f0;
+    --text-color: #211e20;
+    --background-keyboard: rgb(199, 199, 199);
+    --background-shadow: rgb(158, 152, 152);
+    --background-display: rgb(170, 170, 170);
+    --background-color: rgb(168, 167, 167);
+    --text-display: #131313;
+}
 .wrapper {
     height: 100%;
     display: flex;
@@ -25,45 +34,44 @@ html, body {
     justify-content: center;
     align-items: center;
 }
-
 .monitor {
-    height: 450px;
-    width: 650px;
+    height: 400px;
+    width: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 10px 0 20px 0;
     background: var(--background-keyboard);
-    margin: 0 0 20px 0;
     border-radius: 5px;
     position: relative;
 }
-.monitor::after {
-    content: "";
-    width: 16px;
-    height: 16px;
-    background: rgb(207, 86, 86);
-    border-radius: 50%;
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-}
 .monitor__display {
-    height: 400px;
-    width: 600px;
+    height: 350px;
+    width: 550px;
     background: var(--background-display);
+    overflow: hidden;
+    padding: 10px;
+}
+@media (max-height: 1080px) {
+    .monitor {
+        width: 500px;
+        height: 300px;
+    }
+    .monitor__display {
+        height: 250px;
+        width: 450px;
+    }
 }
 .monitor__text {
-    padding: 10px;
     font-weight: 500;
-    overflow: hidden;
-    border-bottom: 1px solid #000;
-    color: #1b5e20;
+    width: auto;
+    color: var(--text-display);
     position: relative;
 }
 .monitor__text::after {
     content: "_";
     color: #fff;
-    font-size: 20px;
+    font-size: 14sdfpx;
     animation: blicking 0.4s linear infinite alternate;
 }
 @keyframes blicking {
@@ -74,6 +82,29 @@ html, body {
         opacity: 0;
     }
 }
+.toggle {
+    background: #353535;
+    border-radius: 10px;
+    width: 30px;
+    height: 16px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+.toggle__circle {
+    background: #fff;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: relative;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s ease 0s;
+}
+.toggle__active {
+    left: 16px;
+    background: #000;
+}
 .keyboard {
     background: var(--background-keyboard);
     width: 810px;
@@ -82,13 +113,14 @@ html, body {
     flex-direction: column;
     padding: 10px;
     border-radius: 5px;
+    transform: scale(1);
 }
 .keyboard__row {
     display: flex;
 }
 .keyboard__row:not(:last-child) { margin-bottom: 10px; }
 li {
-    color: #e9efec;
+    color: var(--text-color);
     width: 45px;
     height: 45px;
     border-radius: 3px;
@@ -101,7 +133,7 @@ li {
     position: relative;
     top: 0;
     transition: all 0.3s ease 0s;
-    background: #211e20;
+    background: var(--background-color);
 }
 .pinhelp {
     font-size: 16px;
@@ -112,7 +144,6 @@ li {
     box-shadow: 0px 1px 1px var(--background-shadow);
     background: #ffb0a3;
 }
-
 .keyboard__row li:not(:last-child) { margin-right: 10px; }
 .keybuttons-left {
     justify-content: center;
